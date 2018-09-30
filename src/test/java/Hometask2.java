@@ -17,34 +17,14 @@ import java.util.concurrent.TimeUnit;
 @RunWith(JUnit4.class)
 public class Hometask2 extends TestCase {
 
-    private static ChromeDriverService service;
     private WebDriver driver;
 
-    @BeforeClass
-    public static void createAndStartService() {
-        System.setProperty("webdriver.chrome.driver",
-                "./src/test/resources/chromedriver.exe");
-
-        service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File("./src/test/resources/chromedriver.exe"))
-                .usingAnyFreePort()
-                .build();
-        try {
-            service.start();
-        } catch (Exception e) {
-
-        }
-    }
-
-    @AfterClass
-    public static void createAndStopService() {
-        service.stop();
-    }
 
     @Before
     public void createDriver() {
-        driver = new RemoteWebDriver(service.getUrl(),
-                DesiredCapabilities.chrome());
+        System.setProperty("webdriver.chrome.driver",
+                "./src/test/resources/chromedriver.exe");
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
