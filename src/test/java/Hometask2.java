@@ -1,29 +1,22 @@
-import junit.framework.TestCase;
+
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-
-@RunWith(JUnit4.class)
-public class Hometask2 extends TestCase {
+public class Hometask2 {
 
     private WebDriver driver;
 
 
     @Before
     public void createDriver() {
-        System.setProperty("webdriver.chrome.driver",
-                "./src/test/resources/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
