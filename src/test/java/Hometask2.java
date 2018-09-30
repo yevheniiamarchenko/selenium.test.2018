@@ -18,7 +18,7 @@ public class Hometask2 {
     public void createDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
     }
 
     @After
@@ -31,6 +31,10 @@ public class Hometask2 {
         driver.get("http://www.google.com/");
         WebElement searchBox = driver.findElement(By.name("q"));
         searchBox.sendKeys("Selenium Webdriver");
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+        }
         WebElement button = driver.findElement(By.name("btnK"));
         button.submit();
         try {
