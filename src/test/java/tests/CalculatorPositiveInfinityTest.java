@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CalculatorAdditionTest extends BaseTest {
+public class CalculatorPositiveInfinityTest extends BaseTest {
 
     private static CalculatorPage calc;
 
@@ -27,6 +27,7 @@ public class CalculatorAdditionTest extends BaseTest {
     @Before
     public void cleanup() {
         calc.clear();
+        calc.calculate("1/0");
     }
 
     @Test
@@ -37,15 +38,15 @@ public class CalculatorAdditionTest extends BaseTest {
     @Parameterized.Parameters(name = "Test: {0}={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"0+0", "0"},
-                {"+0", "0"},
-                {"+", "0"},
-                {"-5+5", "0"},
-                {"1.02+1.001", "2.021"},
-                {"2.02+0.01", "2.03"},
-                {"-1+154", "153"},
-                {"-56+34","-22"},
-                {"99999999999999999999999999+1","1,e+26"}
+                {"+0", "Infinity"},
+                {"+0.5", "Infinity"},
+                {"+0.0000000000000000000000006", "Infinity"},
+                {"-0", "Infinity"},
+                {"-0.0000000000000000000000006", "Infinity"},
+                {"x4", "Infinity"},
+                {"/4", "Infinity"},
+                {"/0", "Infinity"},
+
 
         });
     }

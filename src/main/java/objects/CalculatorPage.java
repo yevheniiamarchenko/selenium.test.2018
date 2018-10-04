@@ -7,7 +7,7 @@ import calc.utilities.Constants;
 
 import java.io.File;
 
-public class CalculatorPage extends CalculatorControls{
+public class CalculatorPage extends CalculatorControls {
 
     WebDriver driver;
 
@@ -22,6 +22,28 @@ public class CalculatorPage extends CalculatorControls{
         }
         driver.findElement(button_equal).click();
         return driver.findElement(result_box).getAttribute("value");
+    }
+
+    @Step
+    public String enterValue(String expression) {
+        for (int i = 0; i < expression.length(); i++) {
+            driver.findElement(By.name("" + expression.charAt(i) + "")).click();
+        }
+        return driver.findElement(result_box).getAttribute("value");
+    }
+
+    @Step
+    public String getValueResultBox() {
+        return driver.findElement(result_box).getAttribute("value");
+    }
+
+    @Step
+    public boolean ifElementExist(String expression) {
+        if (driver.findElement(By.xpath("//input[@name='" + expression + "']")) != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Step
