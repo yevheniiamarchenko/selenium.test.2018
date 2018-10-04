@@ -1,3 +1,6 @@
+package ui;
+
+import base.BaseTest;
 import calc.objects.CalculatorPage;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -7,11 +10,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CalculatorInitializationButtonsTest extends BaseTest {
+public class CalculatorButtonsShouldExistTest extends BaseTest {
     private static CalculatorPage calc;
 
     @Parameterized.Parameter
-    public String expression;
+    public String button;
 
     @BeforeClass
     public static void setup() {
@@ -19,16 +22,10 @@ public class CalculatorInitializationButtonsTest extends BaseTest {
         calc.open();
     }
 
-    @Before
-    public void cleanup() {
-        calc.clear();
-    }
-
-
     @Test
-    public void calculator_InitializationTest() {
+    public void calculator_ButtonsShouldExistTest() {
 
-        Assert.assertTrue(calc.ifElementExist(expression));
+        Assert.assertTrue(calc.ifElementExist(button));
     }
 
     @Parameterized.Parameters(name = "Test: {0}")

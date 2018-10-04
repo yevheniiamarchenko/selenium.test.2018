@@ -15,10 +15,11 @@ public class CalculatorPage extends CalculatorControls {
         this.driver = driver;
     }
 
+
     @Step
     public String calculate(String expression) {
         for (int i = 0; i < expression.length(); i++) {
-            driver.findElement(By.name("" + expression.charAt(i) + "")).click();
+            driver.findElement(By.xpath("//input[@name='" + expression.charAt(i) + "']")).click();
         }
         driver.findElement(button_equal).click();
         return driver.findElement(result_box).getAttribute("value");
@@ -27,7 +28,7 @@ public class CalculatorPage extends CalculatorControls {
     @Step
     public String enterValue(String expression) {
         for (int i = 0; i < expression.length(); i++) {
-            driver.findElement(By.name("" + expression.charAt(i) + "")).click();
+            driver.findElement(By.xpath("//input[@name='" + expression.charAt(i) + "']")).click();
         }
         return driver.findElement(result_box).getAttribute("value");
     }
@@ -39,11 +40,7 @@ public class CalculatorPage extends CalculatorControls {
 
     @Step
     public boolean ifElementExist(String expression) {
-        if (driver.findElement(By.xpath("//input[@name='" + expression + "']")) != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return (driver.findElement(By.xpath("//input[@name='" + expression + "']")) != null);
     }
 
     @Step

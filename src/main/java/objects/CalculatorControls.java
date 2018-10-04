@@ -21,4 +21,5 @@ public class CalculatorControls {
     protected By button_dot = By.xpath("//input[@name='.']");
     protected By button_equal = By.xpath("//input[@name='=']");
     protected By result_box = By.xpath("//input[@name='resultsbox']");
+    protected By form = By.xpath("//form[@name='board'");
 }
