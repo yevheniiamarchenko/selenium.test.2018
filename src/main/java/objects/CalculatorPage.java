@@ -7,13 +7,9 @@ import calc.utilities.Constants;
 
 import java.io.File;
 
-public class CalculatorPage {
+public class CalculatorPage extends CalculatorControls{
 
     WebDriver driver;
-
-    By resultBox = By.id("resultsbox");
-    By equal = By.name("=");
-    By clean = By.name("C");
 
     public CalculatorPage(WebDriver driver) {
         this.driver = driver;
@@ -24,20 +20,20 @@ public class CalculatorPage {
         for (int i = 0; i < expression.length(); i++) {
             driver.findElement(By.name("" + expression.charAt(i) + "")).click();
         }
-        driver.findElement(equal).click();
-        return driver.findElement(resultBox).getAttribute("value");
+        driver.findElement(button_equal).click();
+        return driver.findElement(result_box).getAttribute("value");
     }
 
     @Step
     public void open() {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("calc.html").getFile());
+        File file = new File(classLoader.getResource(Constants.globalPath).getFile());
         driver.get("file:///" + file.getAbsolutePath());
     }
 
 
     @Step
     public void clear() {
-        driver.findElement(clean).click();
+        driver.findElement(button_clear).click();
     }
 }

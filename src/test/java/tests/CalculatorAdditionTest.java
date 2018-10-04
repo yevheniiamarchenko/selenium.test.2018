@@ -1,19 +1,18 @@
 
 import calc.objects.CalculatorPage;
-import calc.utilities.WebDriverInitialization;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
+
 import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CalculatorAdditionTest extends WebDriverInitialization{
+public class CalculatorAdditionTest extends BaseTest {
 
     private static CalculatorPage calc;
-
 
     @Parameterized.Parameter
     public String expression;
