@@ -1,9 +1,9 @@
-package objects;
+package calc.objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
-import utilities.GlobalVariables;
+import calc.utilities.Constants;
 
 import java.io.File;
 
@@ -31,7 +31,7 @@ public class CalculatorPage {
     @Step
     public void open() {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(GlobalVariables.globalPath).getFile());
+        File file = new File(classLoader.getResource("calc.html").getFile());
         driver.get("file:///" + file.getAbsolutePath());
     }
 
