@@ -27,7 +27,7 @@ public class CalculatorClearButtonTest extends BaseTest {
 
     @Test
     public void calculator_ClearButtonTest() {
-        calc.calculate((expression));
+        calc.calculate(expression);
         calc.clear();
         Assert.assertEquals("0", calc.getValueResultBox());
     }
