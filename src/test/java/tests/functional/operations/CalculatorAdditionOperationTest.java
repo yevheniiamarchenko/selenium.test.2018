@@ -1,4 +1,4 @@
-package tests.functional;
+package tests.functional.operations;
 
 import base.BaseTest;
 import objects.CalculatorPage;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CalculatorNegativeInfinityTest extends BaseTest {
+public class CalculatorAdditionOperationTest extends BaseTest {
 
     private static CalculatorPage calc;
 
@@ -27,28 +27,27 @@ public class CalculatorNegativeInfinityTest extends BaseTest {
     }
 
     @Before
-    public void prepare() {
+    public void cleanup() {
         calc.clear();
-        calc.calculate("-1/0");
     }
 
     @Test
-    public void calculator_NegativeInfinityNotChangedAfterOperationsTest() {
+    public void calculator_AdditionOperationTest() {
         Assert.assertEquals(expected, calc.calculate(expression));
     }
 
     @Parameterized.Parameters(name = "Test: {0}={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"+0", "-Infinity"},
-                {"+0.5", "-Infinity"},
-                {"+0.0000000000000000000000006", "-Infinity"},
-                {"-0", "-Infinity"},
-                {"-0.0000000000000000000000006", "-Infinity"},
-                {"x4", "-Infinity"},
-                {"/4", "-Infinity"},
-                {"/0", "-Infinity"},
-
+                {"0+0", "0"},
+                {"+0", "0"},
+                {"+", "0"},
+                {"-5+5", "0"},
+                {"1.02+1.001", "2.021"},
+                {"-0.02+0.01", "-0.01"},
+                {"0.00000000000000000000000001+0.00000000000000000000000001","2e-26"},
+                {"-0.0000000000000000000000001+0.0000000000000000000000001","0"},
+                {"99999999999999999999999999+1","1e+26"}
 
         });
     }

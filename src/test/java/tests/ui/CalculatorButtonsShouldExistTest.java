@@ -1,7 +1,7 @@
-package ui;
+package tests.ui;
 
 import base.BaseTest;
-import calc.objects.CalculatorPage;
+import objects.CalculatorPage;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

@@ -1,6 +1,6 @@
-package ui;
+package tests.ui;
 
-import calc.objects.CalculatorPage;
+import objects.CalculatorPage;
 import org.junit.*;
 import org.openqa.selenium.By;
 import base.BaseTest;

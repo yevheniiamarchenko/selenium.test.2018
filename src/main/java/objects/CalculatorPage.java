@@ -1,9 +1,9 @@
-package calc.objects;
+package objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
-import calc.utilities.Constants;
+import utilities.Constants;
 
 import java.io.File;
 

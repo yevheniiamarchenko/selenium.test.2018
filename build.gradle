@@ -1,6 +1,7 @@
 plugins {
     id 'groovy'
     id 'java'
+    id 'idea'
 }
 
 group 'gl.basecamp'
@@ -30,4 +31,12 @@ dependencies {
     testCompile 'ru.yandex.qatools.allure:allure-commons:1.5.4'
     testCompile 'ru.yandex.qatools.allure:allure-spock-1.0-adaptor:1.0'
 
+}
+
+idea {
+    module {
+        
+        sourceDirs += file("$buildDir/generated/src/main")
+        testSourceDirs += file("$buildDir/generated/src/test/java/tests/")
+    }
 }
